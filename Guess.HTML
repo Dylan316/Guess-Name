@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>This is guess number game</title>
+    </head>
+    <body>
+        <hr>
+         <font face="arial black" color="red"> Created by Dylan from Crescendo International College</font>
+        <hr>
+        <h1>Guess Number Between 1-100 </h1>
+
+        Guess : 
+        <input type="number" id="number" name=number min="1" max="100" width="100px">
+        <button onclick="check()">Guess</button>
+        <hr>
+        Your Guess:
+        <hr>
+        <div id="msg">
+            
+        </div>
+        
+        <script>
+            var answer = parseInt((Math.random())*100+1); 
+            var min = 1;
+            var max = 100;
+            var count = 0;
+           
+            
+            function check(){
+                count++; // count= count+1;
+                var guess = document.getElementById("number").value;
+                var node = document.createElement("p"); //<p> </p>
+                var textnode = document.createTextNode("Guess "+count+": "+guess);
+                var tip = "";
+                node.appendChild(textnode);
+                document.getElementById("msg").appendChild(node);
+                
+                if(answer==guess){
+                    tip = "Bingo!!!"; 
+                }else if(guess>answer){
+                    max = guess;
+                    tip = "Guess between "+min +" and "+max;
+
+                }else{
+                    min = guess;
+                    tip = "Guess between "+min +" and "+max;
+
+                }
+
+                node = document.createElement("p")
+                textnode =  document.createTextNode(tip);
+                node.appendChild(textnode);
+                document.getElementById("msg").appendChild(node);
+
+                
+
+
+            }
+        </script>
+    </body>
+</html>
